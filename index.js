@@ -1,15 +1,15 @@
 (function () {
-  const scriptTag = document.querySelector('#rbb-datateam-iframeScript')
+  var scriptTag = document.querySelector('#rbb-data-iframe-script')
 
-  const iframeId = scriptTag.dataset.iframeId
-  const onlyResizeBelowBreakpoint = scriptTag.dataset.onlyResizeBelowBreakpoint || false
-  const minHeight = scriptTag.dataset.minHeight || 0
-  const maxHeight = scriptTag.dataset.maxHeight || Number.MAX_VALUE
+  var iframeId = scriptTag.dataset.iframeId
+  var onlyResizeBelowBreakpoint = scriptTag.dataset.onlyResizeBelowBreakpoint || false
+  var minHeight = scriptTag.dataset.minHeight || 0
+  var maxHeight = scriptTag.dataset.maxHeight || Number.MAX_VALUE
 
   if (onlyResizeBelowBreakpoint && onlyResizeBelowBreakpoint > window.innerWidth) return
 
-  const iframe = document.querySelector(`#${iframeId}`)
-  let newHeight = window.innerHeight
+  var iframe = document.querySelector(`#${iframeId}`)
+  var newHeight = window.innerHeight
   if (newHeight < minHeight) newHeight = minHeight
   if (newHeight > maxHeight) newHeight = maxHeight
 
