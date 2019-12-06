@@ -17,7 +17,7 @@ For example:
 ```html
   <script
     id="rbb-data-iframe-script"
-    src="https://raw.githubusercontent.com/rbb-data/iframe-sizer-script/master/index.js"
+    src="https://dj1.app.rbb-cloud.de/iframe-sizer-script/index.js"
     data-iframe-id="some-iframe"
     data-only-resize-below-breakpoint="500"
     data-min-height="400"
