@@ -1,5 +1,7 @@
 # iframe sizer script
 
+**NOTE:** This code is deprecated and will not be updated. Use https://github.com/davidjbradshaw/iframe-resizer instead.
+
 A simple js script to set the size of an iFrame to the height of the screen
 
 ## Options
