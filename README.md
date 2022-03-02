@@ -1,27 +1,68 @@
-# iframe sizer script
+# iframe resizer scripts
 
-A simple js script to set the size of an iFrame to the height of the screen
+Scripts to set the size of an iframe to the height of its content or to the height of the screen.
 
-## Options
+Two scripts are made available:
 
-When using the script it can be configured by setting data atributes on the script tag.
-That the script can read the values it needs to have the id `rbb-data-iframe-script`
+- https://storage.googleapis.com/rbb-data-static/lib/iframe-resizer/iframe-resizer.js
+- https://storage.googleapis.com/rbb-data-static/lib/iframe-resizer/iframe-resizer.notify.js
 
-- `data-iframe-id` *string* (required) The id of the iframe to resize
-- `data-only-resize-below-breakpoint` *number* If set the script will only run if the window width is below this number
-- `data-min-height` *number* The minimum height of the iFrmae
-- `data-max-height` *number* The maximum height of the iFrmae
+## Set the iframe's height to the height of its content
 
-For example:
+**NOTE:** If you don't need to support the app, use https://github.com/davidjbradshaw/iframe-resizer instead.
+
+### How to
+
+On the page that will be embedded into another page as an iframe, load the notify script:
 
 ```html
-  <script
-    id="rbb-data-iframe-script"
-    src="https://dj1.app.rbb-cloud.de/iframe-sizer-script/index.js"
-    data-iframe-id="some-iframe"
-    data-only-resize-below-breakpoint="500"
-    data-min-height="400"
-    data-max-height="700"
-    >
-  </script>
+<script src="https://storage.googleapis.com/rbb-data-static/lib/iframe-resizer/iframe-resizer.notify.js"></script>
 ```
+
+This script notifies a parent context whenever the size of `body` changes. Notifications are throttled using lodash' `throttle` function. So, you'll need to include:
+
+```html
+<script src="https://storage.googleapis.com/rbb-data-static/lib/lodash.throttle.js"></script>
+```
+
+Finally, you probably also want to include a polyfill for `ResizeObserver`:
+
+```html
+<script src="https://polyfill.io/v3/polyfill.min.js?features=ResizeObserver"></script>
+```
+
+On the page that contains the iframe to be resized, embed
+
+```html
+<script src="https://storage.googleapis.com/rbb-data-static/lib/iframe-resizer/iframe-resizer.js"></script>
+```
+
+and call
+
+```js
+rbbData.resizeIframe("id-of-my-iframe");
+```
+
+## Set the iframe's height to the height of the screen
+
+### How to
+
+Embed resizer script
+
+```html
+<script src="https://storage.googleapis.com/rbb-data-static/lib/iframe-resizer/iframe-resizer.js"></script>
+```
+
+and call
+
+```js
+rbbData.resizeIframe("id-of-my-iframe", { height: "full" });
+```
+
+### Options
+
+If `height` is set to `'full'`, then further options are available:
+
+- `only-resize-below-breakpoint` _number_ If set the script will only run if the window width is below this number
+- `min-height` _number_ The minimum height of the iframe
+- `max-height` _number_ The maximum height of the iframe
