@@ -36,13 +36,13 @@ var rbbData = (function () {
     );
   }
 
-  function resizeIframe(
-    id,
-    height = "auto",
-    onlyResizeBelowBreakpoint = false,
-    minHeight = 0,
-    maxHeight = Number.MAX_VALUE
-  ) {
+  function resizeIframe(id, options = {}) {
+    // set default options
+    var height = options.height || "auto";
+    var onlyResizeBelowBreakpoint = options.onlyResizeBelowBreakpoint || false;
+    var minHeight = options.minHeight || 0;
+    var maxHeight = options.maxHeight || Number.MAX_VALUE;
+
     var iframe = document.querySelector("#" + id);
 
     if (height === "auto") {
@@ -56,7 +56,10 @@ var rbbData = (function () {
       );
     } else {
       console.warn(
-        `Keyword ${height} is not allowed for parameter 'height'. Allowed values are: 'auto', 'full'`
+        "Keyword " +
+          height +
+          " is not allowed for parameter 'height'. " +
+          "Allowed values are: 'auto', 'full'"
       );
     }
   }
