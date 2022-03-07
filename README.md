@@ -68,6 +68,6 @@ rbbData.resizeIframe("id-of-my-iframe", { height: "full" });
 
 If `height` is set to `'full'`, then further options are available:
 
-- `only-resize-below-breakpoint` _number_ If set the script will only run if the window width is below this number
-- `min-height` _number_ The minimum height of the iframe
-- `max-height` _number_ The maximum height of the iframe
+- `onlyResizeBelowBreakpoint` _number_ If set the script will only run if the window width is below this number
+- `minHeight` _number_ The minimum height of the iframe
+- `maxHeight` _number_ The maximum height of the iframe
