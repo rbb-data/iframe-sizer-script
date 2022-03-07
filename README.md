@@ -7,6 +7,11 @@ Two scripts are made available:
 - https://storage.googleapis.com/rbb-data-static/lib/iframe-resizer/iframe-resizer.js
 - https://storage.googleapis.com/rbb-data-static/lib/iframe-resizer/iframe-resizer.notify.js
 
+And their minified versions:
+
+- https://storage.googleapis.com/rbb-data-static/lib/iframe-resizer/iframe-resizer.min.js
+- https://storage.googleapis.com/rbb-data-static/lib/iframe-resizer/iframe-resizer.notify.min.js
+
 ## Set the iframe's height to the height of its content
 
 **NOTE: If you don't need to support the app, use https://github.com/davidjbradshaw/iframe-resizer instead.** Scripts from https://github.com/davidjbradshaw/iframe-resizer work perfectly well, but - sadly - lead to issues within the app. I have no way of debugging why that is, so I wrote a minimal reproduction of these resizer scripts that do work in the app. If app support is not needed, however, there is no reason to use this code, use https://github.com/davidjbradshaw/iframe-resizer instead, which is well maintained and heavily tested.
