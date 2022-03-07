@@ -1,0 +1,21 @@
+{
+  "name": "iframe-sizer-script",
+  "version": "0.1.0",
+  "private": "true",
+  "description": "Scripts to set the size of an iframe to the height of its content or to the height of the screen.",
+  "scripts": {
+    "build": "uglifyjs src/iframe-resizer.js -o dist/iframe-resizer.min.js && uglifyjs src/iframe-resizer.notify.js -o dist/iframe-resizer.notify.min.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rbb-data/iframe-sizer-script.git"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/rbb-data/iframe-sizer-script/issues"
+  },
+  "homepage": "https://github.com/rbb-data/iframe-sizer-script#readme",
+  "devDependencies": {
+    "uglify-js": "^3.15.2"
+  }
+}
