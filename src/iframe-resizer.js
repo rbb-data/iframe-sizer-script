@@ -19,7 +19,7 @@ var rbbData = (function () {
     iframe.style.height = height + "px";
   }
 
-  function autoResize(iframe) {
+  function autoResize(iframe, defer) {
     window.addEventListener(
       "message",
       function (e) {
@@ -30,7 +30,13 @@ var rbbData = (function () {
 
         if (!e.data["height"]) return;
 
-        iframe.style.height = e.data["height"] + "px";
+        if (defer) {
+          queueMicrotask(() => {
+            iframe.style.height = e.data["height"] + "px";
+          });
+        } else {
+          iframe.style.height = e.data["height"] + "px";
+        }
       },
       false
     );
@@ -39,14 +45,20 @@ var rbbData = (function () {
   function resizeIframe(id, options = {}) {
     // set default options
     var height = options.height || "auto";
+    var defer = options.defer || false;
     var onlyResizeBelowBreakpoint = options.onlyResizeBelowBreakpoint || false;
     var minHeight = options.minHeight || 0;
     var maxHeight = options.maxHeight || Number.MAX_VALUE;
 
-    var iframe = document.querySelector("#" + id);
+    var iframe = document.getElementById(id);
+    if (!iframe) {
+      console.warn(
+        "[iframe resizer] Element with id " + id + " does not exist."
+      );
+    }
 
     if (height === "auto") {
-      autoResize(iframe);
+      autoResize(iframe, defer);
     } else if (height === "full") {
       resizeToFullHeight(
         iframe,

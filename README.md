@@ -46,6 +46,12 @@ and call
 rbbData.resizeIframe("id-of-my-iframe");
 ```
 
+### Options
+
+If `height` is set to `'auto'` (or omitted, since it is the default), then further options are available:
+
+- `defer` _boolean_ (default: `false`) If `true`, setting the iframe's height is queued as microtask. **It is generally not advised to use this.** But: In the rbb|24 app, the resizer script does not work (probably because the app tries to set the iframe's height as well). Deferring the iframe's resize works around this **but the iframe's height can only get bigger, not smaller**. Say you have an expandable that toggles the visibility of some content and is closed in its initial state. On click the content is shown. When `defer` is set to true, then the iframe's height gets adjusted in the app. But Closing the widget will not result in another iframe resize, which means you'll end up with lots of whitespace. Despite this limitation it might make sense to use `defer` in some situations. For example, if you want to show some content once the user has made some choices (and the content will then always be visible).
+
 ## Set the iframe's height to the height of the screen
 
 ### How to
