@@ -14,6 +14,10 @@ And their minified versions:
 
 ## Set the iframe's height to the height of its content
 
+> **Note**
+> 
+> **If you don't need to support the app, use https://github.com/davidjbradshaw/iframe-resizer instead.** Scripts from https://github.com/davidjbradshaw/iframe-resizer work perfectly well, but lead to issues within the app. I have no way of debugging why that is, so I wrote a minimal reproduction of these resizer scripts that do work in the app. If app support is not needed, however, there is no reason to use this code, use https://github.com/davidjbradshaw/iframe-resizer instead, which is well maintained and heavily tested.
+
 ### How to
 
 On the page that will be embedded into another page as an iframe, load the notify script:
